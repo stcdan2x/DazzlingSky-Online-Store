@@ -79,7 +79,7 @@ body {
 /* --------------- Hero ---------------- */
 .hero {
   min-height: calc(100vh - 60px);
-  background: url("./images/hero-bcg.jpeg") center/cover no-repeat;
+  background: url("https://i.pinimg.com/originals/47/1f/1c/471f1cc3a4b4d1e1b5e08ca6ebdbc43a.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
