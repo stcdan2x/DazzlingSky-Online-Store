@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
-  --mainColor: #f09d51;
+  --mainColor: rgba(255, 204, 0, 0.8);
   --stdWhite: #fff;
   --stdBlack: #222;
   --stdGrey: #ececec;
