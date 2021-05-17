@@ -12,9 +12,12 @@
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
 </head>
 <body>
-
+    <div id="home"></div>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar--center">
@@ -31,13 +34,79 @@
         </div>
     </nav>
 
+    <!-- Title and Promo Banner Section -->
+    <div class="title">
+        <div class="title__text">DESIGNER BAGS COLLECTION</div>
+    </div>
+    <div class="promo">
+        <div class="promo__text--left"><span>50%</span>Off on Your First Purchase</div>
+        <div class="promo__text--right"><span>30%</span>Off on All Items</div>
+    </div>
+
+    <!-- New Banner Section -->
+    <div class="new-banner">
+        <div class="banner__slider">
+            <div class="banner__slide">
+                <img src="https://images.pexels.com/photos/1051747/pexels-photo-1051747.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="banner">
+                <div class="banner__slide-info">
+                    <h2>Title 1</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="banner__slide">
+                <img src="https://images.pexels.com/photos/1051744/pexels-photo-1051744.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="banner">
+                <div class="banner__slide-info">
+                    <h2>Title 2</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="banner__slide">
+                <img src="https://images.pexels.com/photos/3865911/pexels-photo-3865911.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="banner">
+                <div class="banner__slide-info">
+                    <h2>Title 3</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="banner__slide">
+                <img src="https://images.pexels.com/photos/5868272/pexels-photo-5868272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="banner">
+                <div class="banner__slide-info">
+                    <h2>Title 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="banner__slide">
+                <img src="https://images.pexels.com/photos/2292953/pexels-photo-2292953.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="banner">
+                <div class="banner__slide-info">
+                    <h2>Title 5</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><br> Quibusdam recusandae eveniet libero, est quasi consequatur tenetur voluptatibus! Neque ipsam sint accusamus.</p>
+                </div>
+            </div>
+            <div class="banner__nav">
+                <div class="banner__slider-btn--left">
+                    <i class="fas fa-chevron-left banner__prev-btn"></i>
+                </div>
+                <div class="banner__slider-selectors">
+                    <div class="banner__selector-btn"></div>
+                    <div class="banner__selector-btn"></div>
+                    <div class="banner__selector-btn"></div>
+                    <div class="banner__selector-btn"></div>
+                    <div class="banner__selector-btn"></div>
+                </div>
+                <div class="banner__slider-btn--right">
+                    <i class="fas fa-chevron-right banner__next-btn"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Hero Section -->
-    <header class="hero" id="home">
+    <!-- <header class="hero" id="home">
         <div class="banner">
             <h1 class="banner__title">Designer Bag Collection</h1>
             <button class="banner__btn"><a href="#products">Shop Now</a></button>
         </div>
-    </header>
+    </header> -->
 
     <!-- Products Section -->
     <section class="products" id="products">
@@ -94,9 +163,53 @@
         </div>
     </div>
 
+    <div class="footer_container">
+        <div class="footer_links">
+          <div class="footer_link_wrapper">
+            <div class="footer_link_items">
+              <h2>About Us</h2>
+              <a href="/sign_up">What we do</a> <a href="/">Testimonials</a>
+              <a href="/">Careers</a> <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer_link_items">
+              <h2>Contact Us</h2>
+              <a href="/">Contact</a> <a href="/">Support</a>
+              <a href="/">Destinations</a> <a href="/">Be a distributor</a>
+            </div>
+          </div>
+          <div class="footer_link_wrapper">
+            <div class="footer_link_items">
+              <h2>Videos</h2>
+              <a href="/">Submit Video</a> <a href="/">Ambassadors</a>
+              <a href="/">Agency</a>
+            </div>
+            <div class="footer_link_items">
+              <h2>Social Media</h2>
+              <a href="/">Instagram</a> <a href="/">Facebook</a>
+              <a href="/">Youtube</a> <a href="/">Twitter</a>
+            </div>
+          </div>
+        </div>
+        <section class="social_media">
+          <div class="social_media_wrap">
+            <div class="footer_logo">
+              <a href="https://stcdan2x.github.io/Dazzling-Sky-One/" id="footer_logo">DAZZLING SKY</a>
+            </div>
+            <p class="website_rights">© DAZZLING SKY 2021. All rights reserved</p>
+            <div class="social_icons">
+              <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-youtube"></i></a>
+              <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </section>
+      </div>
+
     <!-- contentful -->
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <!-- main script -->
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
