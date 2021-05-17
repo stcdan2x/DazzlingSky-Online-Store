@@ -5,19 +5,44 @@ const client = contentful.createClient({
   accessToken: "iGhTpR2RDNMlW_uo9SEec15D6vzh_GMZwkM965L2Y-g"
 });
 
-const cartBtn = document.querySelector(".cart__btn");
-const closeCartBtn = document.querySelector(".close-cart");
-const clearCartBtn = document.querySelector(".clear-cart");
-const cartBlock = document.querySelector(".cart");
-const cartOverlay = document.querySelector(".cart-overlay");
-const cartCounter = document.querySelector(".cart__counter");
-const cartTotal = document.querySelector(".cart-total");
-const cartContent = document.querySelector(".cart-content");
-const productsMain = document.querySelector(".products__main");
+const cartBtn = document.querySelector(".cart__btn"),
+      closeCartBtn = document.querySelector(".close-cart"),
+      clearCartBtn = document.querySelector(".clear-cart"),
+      cartBlock = document.querySelector(".cart"),
+      cartOverlay = document.querySelector(".cart-overlay"),
+      cartCounter = document.querySelector(".cart__counter"),
+      cartTotal = document.querySelector(".cart-total"),
+      cartContent = document.querySelector(".cart-content"),
+      productsMain = document.querySelector(".products__main"),
+      prevBtn = document.querySelector(".banner__prev-btn"),
+      nextBtn = document.querySelector(".banner__next-btn"),
+      bannerSlider = document.querySelector(".banner__slider");
+      
+let slides = document.querySelectorAll(".banner__slide"),
+    slideSelectors = document.querySelectorAll(".banner__selector-btn"),
+    cart = [],
+    buttonsDOM = [];
 
-let cart = [];
+slides = [...slides];
+slideSelectors = [...slideSelectors];
 
-let buttonsDOM = [];
+
+window.onload = () => {
+    const   titleBar = document.querySelector(".title"),
+            promoBar = document.querySelector(".promo"),
+            promoLeft = document.querySelector(".promo__text--left"),
+            promoRight = document.querySelector(".promo__text--right");
+    //for initial banner animation
+    const   insTitleBar = () => titleBar.style.transform = "translate(0)",
+            insPromoBar = () => promoBar.style.transform = "translate(0)",
+            dropLeft = () => promoLeft.style.transform = "translate(0)",
+            dropRight = () => promoRight.style.transform = "translate(0)";
+    setTimeout(insTitleBar, 100);
+    setTimeout(insPromoBar, 800);
+    setTimeout(dropLeft, 1200);
+    setTimeout(dropRight, 1700);
+}
+
 
 //access products data
 class Products{
@@ -249,9 +274,28 @@ class Storage{
     }
 }
 
+//Styles and Presentation
+class Present {
+    removeActive = () => {
+        for (let slide of slides) {
+            slide.classList.remove("active");
+        }
+        for (let slideSelector of slideSelectors) {
+            slideSelector.classList.remove("active");
+        }
+    }
+
+    addActive = index => {
+        slides[index].classList.add("active");
+        slideSelectors[index].classList.add("active");
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const ui = new UI();
     const products = new Products();
+    const present = new Present();
     ui.restoreCart();
     //get all products from data source
     products.getProducts().then(products => {
@@ -261,5 +305,55 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.getCartButtons();
         ui.cartLogic();
     });
+
+    const slideCount = slides.length;
+    let index = 0;
+    nextBtn.addEventListener("click", () => {
+        present.removeActive();
+        index++;
+        if(index > (slideCount - 1)) {
+            index = 0;
+        }
+        present.addActive(index);
+    });
+    prevBtn.addEventListener("click", () => {
+        present.removeActive();
+        index--;
+        if(index < 0) {
+            index = (slideCount - 1);
+        }
+        present.addActive(index);
+    });
+
+    slideSelectors.forEach((selector, index) => {
+        selector.addEventListener("click", () => {
+            present.removeActive();
+            present.addActive(index);
+        });
+    });
+
+    let setAuto;
+    const slideAuto = () => {
+        setAuto = setInterval(() => {
+            present.removeActive();
+            index++;
+            if(index > (slideCount - 1)) {
+            index = 0;
+            }
+            present.addActive(index);
+        }, 4000);
+    }
+    slideAuto();
+
+    bannerSlider.addEventListener("mouseover", () => {
+        clearInterval(setAuto);
+        setAuto = 0;
+    })
+
+    bannerSlider.addEventListener("mouseout", () => {
+        slideAuto();
+    })
+
 });
 
+ 
