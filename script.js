@@ -26,8 +26,8 @@ let slides = document.querySelectorAll(".banner__slide"),
 slides = [...slides];
 slideSelectors = [...slideSelectors];
 
-
-window.onload = () => {
+window.addEventListener("load", () => {
+    const   present = new Present();
     const   titleBar = document.querySelector(".title"),
             promoBar = document.querySelector(".promo"),
             promoLeft = document.querySelector(".promo__text--left"),
@@ -41,7 +41,55 @@ window.onload = () => {
     setTimeout(insPromoBar, 800);
     setTimeout(dropLeft, 1200);
     setTimeout(dropRight, 1700);
-}
+
+    const slideCount = slides.length;
+    let index = 0;
+    nextBtn.addEventListener("click", () => {
+        present.removeActive();
+        index++;
+        if(index > (slideCount - 1)) {
+            index = 0;
+        }
+        present.addActive(index);
+    });
+    prevBtn.addEventListener("click", () => {
+        present.removeActive();
+        index--;
+        if(index < 0) {
+            index = (slideCount - 1);
+        }
+        present.addActive(index);
+    });
+
+    slideSelectors.forEach((selector, index) => {
+        selector.addEventListener("click", () => {
+            present.removeActive();
+            present.addActive(index);
+        });
+    });
+
+    let setAuto;
+    const slideAuto = () => {
+        setAuto = setInterval(() => {
+            present.removeActive();
+            index++;
+            if(index > (slideCount - 1)) {
+            index = 0;
+            }
+            present.addActive(index);
+        }, 4000);
+    }
+    slideAuto();
+
+    bannerSlider.addEventListener("mouseover", () => {
+        clearInterval(setAuto);
+        setAuto = 0;
+    })
+
+    bannerSlider.addEventListener("mouseout", () => {
+        slideAuto();
+    })
+});
 
 
 //access products data
@@ -64,7 +112,7 @@ class Products{
             });
             return products;
         } catch (error) {
-            console.log(error); 
+            console.log(error);
         }
     }
 }
@@ -295,7 +343,6 @@ class Present {
 document.addEventListener("DOMContentLoaded", () => {
     const ui = new UI();
     const products = new Products();
-    const present = new Present();
     ui.restoreCart();
     //get all products from data source
     products.getProducts().then(products => {
@@ -305,55 +352,4 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.getCartButtons();
         ui.cartLogic();
     });
-
-    const slideCount = slides.length;
-    let index = 0;
-    nextBtn.addEventListener("click", () => {
-        present.removeActive();
-        index++;
-        if(index > (slideCount - 1)) {
-            index = 0;
-        }
-        present.addActive(index);
-    });
-    prevBtn.addEventListener("click", () => {
-        present.removeActive();
-        index--;
-        if(index < 0) {
-            index = (slideCount - 1);
-        }
-        present.addActive(index);
-    });
-
-    slideSelectors.forEach((selector, index) => {
-        selector.addEventListener("click", () => {
-            present.removeActive();
-            present.addActive(index);
-        });
-    });
-
-    let setAuto;
-    const slideAuto = () => {
-        setAuto = setInterval(() => {
-            present.removeActive();
-            index++;
-            if(index > (slideCount - 1)) {
-            index = 0;
-            }
-            present.addActive(index);
-        }, 4000);
-    }
-    slideAuto();
-
-    bannerSlider.addEventListener("mouseover", () => {
-        clearInterval(setAuto);
-        setAuto = 0;
-    })
-
-    bannerSlider.addEventListener("mouseout", () => {
-        slideAuto();
-    })
-
 });
-
- 
